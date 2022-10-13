@@ -1,0 +1,42 @@
+.modalContainer{
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:1050;
+    width:100%;
+    height:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.backgroundModal{
+    position: absolute;
+    background-color: rgba(0,0,0,.3);
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    z-index:2;
+}
+.modalBody{
+    z-index:3;
+    min-width: 300px;
+    max-width:950px;
+    background-color: var(--black);
+    box-shadow: 0 4px 6px 0 rgba(0,0,0,.2);
+    padding:30px;
+    text-align: center;
+    color:white;
+    animation:showModal .2s ease-out forwards;
+}
+
+@keyframes showModal{
+    from{
+        transform:scale(.9);
+        opacity:0;
+    }
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+}

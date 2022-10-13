@@ -1,0 +1,13 @@
+.notification{
+    border:solid 2px;
+    border-color:inherit;
+    padding:8px 15px;
+    width:min-content;
+    display:flex;
+    align-items:center;
+    gap:15px;
+    white-space:nowrap;
+    font-size:.9em;
+    border-radius:8px;
+    background-color: #f8f8f8;
+}

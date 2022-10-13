@@ -1,0 +1,55 @@
+{
+  "name": "mern-template",
+  "version": "1.0.0",
+  "description": "Plantilla para proyectos con React, Mongo, Node y Express.",
+  "main": "server.ts",
+  "dependencies": {
+    "@types/connect-busboy": "0.0.2",
+    "@types/express-session": "^1.15.16",
+    "@types/mongoose": "^5.7.1",
+    "@types/node": "^12.12.27",
+    "@types/passport": "^1.0.2",
+    "argon2": "^0.24.1",
+    "aws-sdk": "^2.930.0",
+    "celebrate": "^11.0.1",
+    "connect-busboy": "0.0.2",
+    "connect-mongo": "^3.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "helmet": "^3.21.2",
+    "mkdirp": "^1.0.3",
+    "moment": "^2.29.1",
+    "mongoose": "^5.9.1",
+    "mongoose-history": "^0.8.0",
+    "nodemailer": "^6.6.1",
+    "passport": "^0.4.1",
+    "typescript": "^3.7.5",
+    "underscore": "^1.9.2",
+    "winston": "^3.2.1",
+    "xlsx": "^0.15.5"
+  },
+  "devDependencies": {
+    "@types/jest": "^25.1.4",
+    "jest": "^25.1.0",
+    "supertest": "^4.0.2",
+    "ts-jest": "^25.2.1",
+    "tslint-jest": "^1.0.5"
+  },
+  "scripts": {
+    "test": "jest",
+    "start": "ts-node server.ts",
+    "seeds": "ts-node --project tsconfig.json seeds/index.ts"
+  },
+  "author": "Boorpret S.C.A",
+  "license": "ISC",
+  "jest": {
+    "testEnvironment": "node",
+    "verbose": true,
+    "preset": "ts-jest",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
+  }
+}

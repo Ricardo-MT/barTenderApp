@@ -1,0 +1,36 @@
+.selectContainer {
+    min-width: 170px;
+    max-width: max-content;
+    position: relative;
+    cursor: default;
+  }
+  .disabled {
+    color: var(--grayMedium);
+  }
+  .optionSelected {
+    padding-right: 12px;
+    display: inline-block;
+    width: calc(100% - 10px);
+    font-size: 13.33px;
+  }
+  .optionsContainer {
+    background-color: white;
+    box-shadow: 0px 1px 6px #00000029;
+    border-radius: 8px;
+    margin-top: 4px;
+    position: absolute;
+    top: 100%;
+    z-index: 99;
+    width: 100%;
+  }
+  .optionItem {
+    padding: 8px 12px;
+    cursor: default;
+    font-size: 13.33px;
+  }
+  .optionItem.selected {
+    background-color: var(--blueMedium);
+  }
+  .optionItem:hover {
+    background-color: var(--blueLight);
+  }
