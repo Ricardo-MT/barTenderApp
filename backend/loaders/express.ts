@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Application } from 'express';
 import cors from 'cors';
 import Logger from './logger';
 import helmet from 'helmet';
@@ -7,7 +7,7 @@ import config from '../config';
 import busboy from 'connect-busboy';
 import { isCelebrate } from 'celebrate';
 
-export default async (): Promise<express.Application> => {
+export default async (): Promise<Application> => {
 
     const app = express();
 
@@ -34,7 +34,7 @@ export default async (): Promise<express.Application> => {
     app.use(helmet());
     app.use(express.json({ limit: '50mb' }));
     app.use(express.urlencoded({ limit: '50mb', extended: true }));
-    
+
     app.use(config.api.prefix, express.static('api/data'))
 
     // Load API routes
