@@ -1,5 +1,5 @@
 import appApi, { appApiWithoutLoader } from './config';
-import axios from 'axios';
+
 //Checkear si el usuario está logueado.
 export const checkAuth = () => appApiWithoutLoader.get('/authentication');
 

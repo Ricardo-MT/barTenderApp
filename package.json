@@ -1,5 +1,5 @@
 {
-  "name": "iturri_App",
+  "name": "bartender_app",
   "description": "Aplicación web para el panel de control que servirá de fuente de datos para la aplicación móvil.",
   "version": "0.1.0",
   "private": true,

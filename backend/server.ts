@@ -1,6 +1,5 @@
 import config from './config';
 import Logger from './loaders/logger';
-import path from 'path';
 
 async function startServer(): Promise<void> {
 

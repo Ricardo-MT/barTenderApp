@@ -1,16 +1,13 @@
 import expressLoader from './express';
-import mongooseLoader from './mongoose';
 import Logger from './logger';
 
 
 const indexLoader =  async () => {
 
-    const mongoConnection = await mongooseLoader();
-    Logger.info('MongoDB inicializado');
-    const app = await expressLoader(mongoConnection);
-    Logger.info('Express inicializado');
+    const app = await expressLoader();
+    Logger.info('Express initialiazed');
 
-    return { app, connection: mongoConnection };
+    return { app };
 
 
     // ... more loaders can be here

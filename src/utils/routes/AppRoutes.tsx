@@ -1,17 +1,13 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import PrivateRoute from './PrivateRoute';
+import Layout from '../../components/Layout/Layout';
+import DashboardPage from '../../pages/Dashboard/Dashboard';
 
 //Importacion de paginas
-import Login from '../../pages/Login/Login';
-import Centros from '../../pages/Centros/Centros';
 
 const AppRoutes = () => {
     return <Router>
         <Switch>
-            <Route path="/login" component={Login} />
-            <PrivateRoute exact path="/centros">
-                <Centros/>
-            </PrivateRoute>
+            <Route path="/dashboard" component={()=><Layout><DashboardPage/></Layout>} />
         </Switch>
     </Router>
 }

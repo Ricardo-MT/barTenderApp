@@ -1,33 +1,33 @@
 import React, { Dispatch, FunctionComponent } from "react";
-import { ValidatorsTypes, validateInput } from "../../utils/Validators";
+import { validateInput, ValidatorsTypes } from "../../utils/validators/Validators";
 import inputStyles from "./Input.module.css";
 
 type Props = {
-    value: any, // OK
-    setValue: Dispatch<any>, // OK
-    type: string, // OK
-    name: string, // OK
-    error?: string, // OK
-    setError?: Dispatch<any>, // OK
-    validators?: ValidatorsTypes[], // OK
-    customValidations?: Function[], // OK
-    placeHolder?: string, // OK
-    disabled?: boolean, // OK
-    required?: boolean, // OK
-    label?: string, // OK
-    onClick?: (e: React.FocusEvent<HTMLInputElement>) => void, // OK
-    onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void, // OK
-    onChange?: (e:React.ChangeEvent<HTMLInputElement>) => void, // OK
-    containerStyle?: React.CSSProperties, // OK
-    inputStyle?: React.CSSProperties, // OK
-    testId?:string // OK
+    value: any, 
+    setValue: Dispatch<any>, 
+    type: string, 
+    name: string, 
+    error?: string, 
+    setError?: Dispatch<any>, 
+    validators?: ValidatorsTypes[], 
+    customValidations?: Function[], 
+    placeHolder?: string, 
+    disabled?: boolean, 
+    required?: boolean, 
+    label?: string, 
+    onClick?: (e: React.FocusEvent<HTMLInputElement>) => void, 
+    onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void, 
+    onChange?: (e:React.ChangeEvent<HTMLInputElement>) => void, 
+    containerStyle?: React.CSSProperties, 
+    inputStyle?: React.CSSProperties, 
+    testId?:string 
 }
 
 /**
- * @author Papo
- * @param value Tipo string.
- * @param setValue Dispatch - string.
- * @param validators Array de strings. Cada elemento representa una validación genérica que se llevará a cabo con el value.
+ * @author Ricardo Mejias
+ * @param value String.
+ * @param setValue Dispatch - String.
+ * @param validators Array<String>. Cada elemento representa una validación genérica que se llevará a cabo con el value.
  * @param inputStyle Estilos CSS para el input tag.
  * @param containerStyle Estilos CSS para el div padre que encierra el label tag y el input tag.
  * @param customValidations Array de funciones personalizadas validadoras del input value.

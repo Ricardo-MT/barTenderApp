@@ -37,7 +37,6 @@ const useAxios = () => {
     }), [inc, dec, axiosNotification]);
 
     return {interceptors, axiosNotification, requestsCounter};
-
 }
 
 export default useAxios;

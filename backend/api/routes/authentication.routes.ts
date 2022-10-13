@@ -7,7 +7,6 @@ const route = Router();
 export default (app: Router) => {
     const authenticationController = new AuthenticationController;
     app.use('/authentication', route);
-    route.get('/',authenticationController.check)
     route.post('/',
         celebrate({
             body: Joi.object({
