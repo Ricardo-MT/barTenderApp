@@ -1,3 +1,4 @@
+import Logger from "../../loaders/logger";
 import SimpleLock from "../Lock/simpleLock";
 import Order from "../Order/order";
 
@@ -14,6 +15,7 @@ class Report {
         while (!this.addOrderLock.acquire()) {
 
         }
+        Logger.debug(`User ${order.user} orders a ${order.drink} on ${new Date(order.timestamp).toLocaleString()}`);
         this._orders.push(order);
         this.addOrderLock.release();
     }

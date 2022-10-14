@@ -20,7 +20,7 @@ class BartenderSession {
         this.report = new Report();
     }
 
-    handleOrder(order: Order): boolean {
+    handleIncomingOrder(order: Order): boolean {
         let canServeOrder = this.bartender.handleIncomingOrder(order);
         if (canServeOrder) {
             this.report.addOrder(order);

@@ -16,7 +16,7 @@ class Bartender {
 
     constructor({
         name,
-        preparationTime = 5,
+        preparationTime,
         preparationCapacity,
     }: {
         name: string,
@@ -64,18 +64,22 @@ class Bartender {
 
     handleIncomingOrder(order: Order): boolean {
         let acquired = this.shouldPrepareDrinkLock.acquire();
-        if (acquired && this.shouldPrepareDrink(order)) {
-            this.modifyDrinkLockWaitingCount += 1;
-
-            if (!this.currentAction) {
-                this.setCurrentAction({
-                    drink: order.drink,
-                    count: 0,
-                });
+        if (acquired) {
+            let shouldPrepareDrink = this.shouldPrepareDrink(order);
+            if (shouldPrepareDrink) {
+                this.modifyDrinkLockWaitingCount += 1;
+                if (!this.currentAction) {
+                    this.setCurrentAction({
+                        drink: order.drink,
+                        count: 0,
+                    });
+                }
             }
             this.shouldPrepareDrinkLock.release();
-            this.prepareDrink();
-            return true;
+            if (shouldPrepareDrink) {
+                this.prepareDrink();
+                return true;
+            }
         }
         return false;
     }
@@ -104,7 +108,12 @@ class Bartender {
     private modifyDrinksCount(n: number) {
         while (!this.modifyDrinkCountLock.acquire()) {
         }
+
         while (!this.shouldPrepareDrinkLock.acquire()) {
+        }
+
+        if (n < 0) {
+            this.modifyDrinkLockWaitingCount -= 1;
         }
         if (this.modifyDrinkLockWaitingCount == 0) {
             this.setCurrentAction(undefined);
@@ -114,7 +123,6 @@ class Bartender {
             _tempCurrentAction.count += n;
             this.setCurrentAction(_tempCurrentAction);
         }
-        this.modifyDrinkLockWaitingCount -= 1;
         this.shouldPrepareDrinkLock.release();
         this.modifyDrinkCountLock.release();
     }

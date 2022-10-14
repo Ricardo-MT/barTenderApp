@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import authenticationRoutes from './routes/authentication.routes';
+import orderRoutes from './routes/order.routes';
 
 export default () => {
     const app = Router();
-    authenticationRoutes(app);
+    orderRoutes(app);
     return app;
 };

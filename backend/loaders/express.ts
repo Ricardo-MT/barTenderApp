@@ -5,7 +5,7 @@ import helmet from 'helmet';
 import routes from '../api';
 import config from '../config';
 import busboy from 'connect-busboy';
-import { isCelebrate } from 'celebrate';
+import { isCelebrateError } from 'celebrate';
 
 export default async (): Promise<Application> => {
 
@@ -44,22 +44,17 @@ export default async (): Promise<Application> => {
     return app;
 }
 const customErrors = (err, req, res, next) => {
-    if (!isCelebrate(err)) {
+    if (!isCelebrateError(err)) {
         return next(err);
     }
     const {
-        joi,
-        meta,
+        message,
     } = err;
 
     const result = {
         statusCode: 400,
-        error: `Bad Request: ${joi.message}`,
+        error: `Bad Request: ${message}`,
         message: "Bad request",
-        validation: {
-            source: meta.source,
-            keys: [],
-        },
     };
 
     return res.status(400).send(result);
