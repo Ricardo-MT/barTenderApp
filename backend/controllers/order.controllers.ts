@@ -30,7 +30,12 @@ export default class OrderController {
 
     public getOrders = async (req: Request, res: Response,) => {
         try {
-            res.status(200).json({ status: 200, orders: this.orderService.getOrders() });
+            let orders = this.orderService.getOrders();
+            const skip = req.query.skip != null ? Number(req.query.skip) : 0;
+            let limit = req.query.limit != null ? Number(req.query.limit) : (orders.length - skip);
+            orders = orders.slice(skip, skip + limit);
+
+            res.status(200).json({ status: 200, orders });
         } catch (e) {
             Logger.error(e);
             return res.status(400).json({ status: 400, message: 'Server error' });

@@ -16,13 +16,42 @@ describe('GET orders', () => {
         expect(res.statusCode).toEqual(200)
     })
 
-    it('should have "orders" key with a defined value ', async () => {
+    it('should have "orders" key with a defined value', async () => {
         const res = await request(app)
             .get('/api/order')
             .send()
 
         expect(res.statusCode).toEqual(200)
         expect(res.body).toHaveProperty('orders')
+    })
+
+    it('should allow "skip" and "limit" query parameters for pagination', async () => {
+        const res = await request(app)
+            .get('/api/order?skip=0&limit=3')
+            .send()
+
+        expect(res.statusCode).toEqual(200)
+        expect(res.body).toHaveProperty('orders')
+    })
+
+    it('The total of orders in the response should not be greater than the value passed in the "limit" parameter', async () => {
+        const limit = 0;
+        await Promise.all([
+            request(app)
+                .post('/api/order')
+                .send({
+                    user: 23,
+                    drink: 'BEER'
+                }),
+        ])
+
+        const res = await request(app)
+            .get(`/api/order?skip=0&limit=${limit}`)
+            .send()
+
+        expect(res.statusCode).toEqual(200)
+        expect(res.body).toHaveProperty('orders')
+        expect(res.body.orders.length).toBeLessThanOrEqual(limit);
     })
 })
 
@@ -73,6 +102,7 @@ describe('POST orders', () => {
     })
 
     it('should complete successfully', async () => {
+
         let app = await expressLoader();
         const res = await request(app)
             .post('/api/order')

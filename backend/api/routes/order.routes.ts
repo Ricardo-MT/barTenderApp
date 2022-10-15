@@ -16,5 +16,11 @@ export default (app: Router) => {
         orderController.handleIncomingOrder);
 
     route.get('/',
+        celebrate({
+            query: Joi.object({
+                skip: Joi.number().empty('').allow(null),
+                limit: Joi.number().empty('').allow(null),
+            }),
+        }),
         orderController.getOrders);
 }
