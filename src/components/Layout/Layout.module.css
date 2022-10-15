@@ -1,0 +1,13 @@
+main{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+.layoutBody{
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden;
+    background-color: var(--background);
+    flex: 1;
+}

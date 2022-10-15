@@ -1,7 +1,9 @@
 import React, { FunctionComponent, useRef } from 'react';
 import Header from '../Header/Header';
+import styles from './Layout.module.css';
 
 type Props = {
+    children: React.ReactNode
 }
 const Layout : FunctionComponent<Props>= (props) => {
 
@@ -9,7 +11,7 @@ const Layout : FunctionComponent<Props>= (props) => {
 
     return <main ref={mainRef}>
         <Header/>
-        <div style={{padding:'0 0'}}>
+        <div className={styles.layoutBody}>
             {props.children}
         </div>
     </main>

@@ -1,0 +1,17 @@
+:root {
+    --size: 1px;
+    --divider-background-color: #a1a1a1;
+}
+
+.dividerHorizontal{
+    height: var(--size);
+}
+
+.dividerVertical{
+    width: var(--size);
+}
+
+.dividerHorizontal, .dividerVertical{
+    align-self: stretch;
+    background-color: var(--divider-background-color);
+}

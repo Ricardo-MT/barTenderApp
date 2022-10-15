@@ -3,7 +3,8 @@ import modalStyles from '../styles/Modal.module.css';
 import ReactDOM from "react-dom";
 type Props = {
     open:boolean,
-    setOpen:Dispatch<boolean>
+    setOpen:Dispatch<boolean>,
+    children: React.ReactNode,
 }
 const Modal : FunctionComponent<Props> = (props) => {
     if(!document.getElementById('modal-container')){

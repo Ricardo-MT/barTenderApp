@@ -26,8 +26,8 @@ const ModalConfirmar: FunctionComponent<Props> = (props) => {
         setOpen={props.setOpen} >
         <p>{props.header}</p>
         <p>{props.message}</p>
-        <Button action={cancelar} color='red' text={props.cancelarMessage ? props.cancelarMessage : 'Cancelar'} />
-        <Button action={confirmar} color='yellow' text={props.confirmarMessage ? props.confirmarMessage : 'Confirmar'} />
+        <Button action={cancelar} text={props.cancelarMessage ? props.cancelarMessage : 'Cancelar'} />
+        <Button action={confirmar} text={props.confirmarMessage ? props.confirmarMessage : 'Confirmar'} />
     </Modal>
 };
 

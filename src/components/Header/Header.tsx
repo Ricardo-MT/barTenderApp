@@ -9,11 +9,9 @@ export const Header: FunctionComponent<Props> = (props) => {
 		<header>
 			<React.Fragment>
 				<div className={styles.headerContainer}>
-					<div className={styles.userInfo}>
-						<span className={styles.textInfo}>
-							<label className={styles.nombre}>Header</label>
-						</span>
-					</div>
+					<span className={styles.appTitle}>
+						<label>Bartender App</label>
+					</span>
 				</div>
 			</React.Fragment>
 		</header>

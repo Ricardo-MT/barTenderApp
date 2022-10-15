@@ -1,0 +1,14 @@
+.headerContainer{
+    min-height: 48px;
+    background-color: var(--primary);
+    padding: 10px 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+}
+
+.appTitle{
+    color: var(--background);
+    font-size: 2em;
+}

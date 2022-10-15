@@ -9,5 +9,8 @@
     white-space:nowrap;
     font-size:.9em;
     border-radius:8px;
-    background-color: #f8f8f8;
+    background-color: var(--background);
+    position: fixed;
+    right: 15px;
+    top: 10px;
 }

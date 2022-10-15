@@ -1,9 +1,8 @@
-import {useState, useCallback, useMemo} from 'react';
+import {useState, useCallback, useMemo, useContext} from 'react';
 import {AxiosResponse, AxiosRequestConfig, AxiosError } from 'axios';
 
 const useAxios = () => {
-    const [requestsCounter, setCounter] = useState(0);
-    const [axiosNotification, setAxiosNotification] = useState<{type:'error' |'success', text:string} | null>(null);
+    const [requestsCounter, setCounter] = useState(0);    
 
     //Contadores para el loader
     const inc = useCallback(() => {
@@ -19,24 +18,15 @@ const useAxios = () => {
         },
         response: (response : AxiosResponse) => {
             dec(); 
-            if((!axiosNotification || axiosNotification.type === "error")) {
-                setAxiosNotification({type:'success', text: response?.data.message || "Operación realizada con éxito."});
-            }
             return response
         },
         error: (axiosError : AxiosError) => {
             dec();
-            if((!axiosNotification || axiosNotification.type === "success")){
-                setAxiosNotification({type:'error', text: axiosError?.response?.data.message || "Se ha producido un error con el servidor."});
-                setTimeout(() => {
-                    setAxiosNotification(null);
-                }, 1300);
-            }
             return Promise.reject(axiosError)
         }
-    }), [inc, dec, axiosNotification]);
+    }), [inc, dec]);
 
-    return {interceptors, axiosNotification, requestsCounter};
+    return {interceptors, requestsCounter};
 }
 
 export default useAxios;

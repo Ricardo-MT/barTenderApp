@@ -1,15 +1,14 @@
 .btn{
     border-radius: 5px;
     padding: 8px 12px;
+    background: var(--primary);
     color:#9099A0;
     border:solid 1px #9099A0;
     background-color: transparent;
     min-width: 100px;
 }
-.btn svg{
-    margin-right:8px;
-}
+
 .btn:hover{
-    background: var(--main-color);
-    color:white;
+    color: var(--accent);
+    border-color: var(--accent);
 }

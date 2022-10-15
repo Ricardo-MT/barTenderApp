@@ -1,26 +1,20 @@
 import React, {FunctionComponent} from 'react';
-import buttonStyles from './Button.module.css';
-import Icon from '../Icon/Icon';
-import { IconDefinition } from '../Icon/IconGallery/Index';
+import styles from './Button.module.css'
 
 type Props = {
     text:string,
     action?:()=>void,
-    backgroundColor?:string,
     style?:{},
-    icon?:IconDefinition,
     type?:"button" | "reset" | "submit",
-    color?:string
 }
 
 const Button : FunctionComponent<Props> = (props) => {
 
-    return <button className={buttonStyles.btn}
+    return <button className={styles.btn}
                 type={props.type ? props.type : "button"}
-                   onClick={props.action ? props.action : ()=>{}}
-                   style={Object.assign({},props.style,{backgroundColor:props.backgroundColor? props.backgroundColor :""})}
+                   onClick={props.action}
+                   style={props.style}
                    >
-                       {props.icon && <Icon icon={props.icon}  />}
         {props.text}
     </button>
 };
