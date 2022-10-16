@@ -1,0 +1,8 @@
+.createOrdersPanelContainer{
+    flex: 2;
+    padding: 12px;
+}
+
+.createOrdersPanelContainer>*{
+    margin: 5px;
+}

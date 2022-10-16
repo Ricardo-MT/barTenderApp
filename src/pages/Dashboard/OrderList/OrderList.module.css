@@ -1,0 +1,14 @@
+.fetchOrdersPanelContainer{
+    flex: 3;
+    overflow-y: scroll;
+    padding: 12px;
+}
+.fetchOrdersPanelContainer>*{
+    margin: 5px;
+}
+.orderItemContainer{
+    padding: 5px 8px;
+}
+.orderItemContainer:nth-child(even){
+    background-color: var(--background-accent);
+}

@@ -5,20 +5,3 @@
     flex-direction: row;
     align-items: stretch;
 }
-
-.fetchOrdersPanelContainer{
-    flex: 3;
-    overflow-y: scroll;
-}
-
-.createOrdersPanelContainer{
-    flex: 2;
-}
-
-.fetchOrdersPanelContainer, .createOrdersPanelContainer{
-    padding: 12px;
-}
-
-.fetchOrdersPanelContainer>*, .createOrdersPanelContainer>*{
-    margin: 5px;
-}

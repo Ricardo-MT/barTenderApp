@@ -2,6 +2,7 @@
   --primary: #1e90ff;
   --accent: #1a0926;
   --background: #f0f0f0;
+  --background-accent: #d0d0d0;
   --statusSuccess: green;
   --statusError: red;
 }
