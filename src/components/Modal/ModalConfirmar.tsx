@@ -1,10 +1,10 @@
-import React, { FunctionComponent, Dispatch } from 'react';
+import { FunctionComponent } from 'react';
 import Modal from './Modal';
 import Button from '../Button/Button';
 
 type Props = {
     open: boolean,
-    setOpen: Dispatch<boolean>,
+    onClose: () => void,
     onConfirmar: () => void,
     onCancelar: () => void,
     header: string,
@@ -14,16 +14,16 @@ type Props = {
 }
 const ModalConfirmar: FunctionComponent<Props> = (props) => {
     const confirmar = () => {
-        props.setOpen(false);
+        props.onClose();
         props.onConfirmar()
     }
     const cancelar = () => {
-        props.setOpen(false);
+        props.onClose();
         props.onCancelar()
     }
     return <Modal
         open={props.open}
-        setOpen={props.setOpen} >
+        onClose={props.onClose} >
         <p>{props.header}</p>
         <p>{props.message}</p>
         <Button action={cancelar} text={props.cancelarMessage ? props.cancelarMessage : 'Cancelar'} />

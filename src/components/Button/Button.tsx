@@ -1,21 +1,22 @@
-import React, {FunctionComponent} from 'react';
+import {FunctionComponent} from 'react';
 import styles from './Button.module.css'
 
 type Props = {
     text:string,
     action?:()=>void,
     style?:{},
+    disabled?: boolean, 
     type?:"button" | "reset" | "submit",
 }
 
-const Button : FunctionComponent<Props> = (props) => {
+const Button : FunctionComponent<Props> = ({text, action, style, disabled=false, type='button'}) => {
 
-    return <button className={styles.btn}
-                type={props.type ? props.type : "button"}
-                   onClick={props.action}
-                   style={props.style}
+    return <button disabled={disabled} className={styles.btn}
+                type={type}
+                   onClick={action}
+                   style={style}
                    >
-        {props.text}
+        {text}
     </button>
 };
 

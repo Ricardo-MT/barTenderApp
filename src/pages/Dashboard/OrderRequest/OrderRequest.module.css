@@ -6,3 +6,9 @@
 .createOrdersPanelContainer>*{
     margin: 5px;
 }
+
+.createOrderForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

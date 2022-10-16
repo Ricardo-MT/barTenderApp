@@ -38,15 +38,15 @@
     color: #a3a2a2;
   }
   .error {
-    color: var(--redDesaturated);
+    color: var(--statusError);
   }
   .errorContainer {
-    border-color: var(--redDesaturated);
+    border-color: var(--statusError);
   }
   .required::after {
     content: ' *';
     font-size: 1.5em;
-    color: var(--redDesaturated);
+    color: var(--statusError);
   }
   
   /*--- CHECKBOX Y RADIOS ---*/

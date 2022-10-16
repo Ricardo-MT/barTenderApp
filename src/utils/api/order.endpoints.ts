@@ -17,9 +17,9 @@ class OrderEndpoints {
         return (await this.axios.get<{ orders: Array<IOrder>, message?: string }>(`${this.route}?skip=${skip}&limit=${this.limit}`)).data;
     }
 
-    async requestDrink(drink: IDrink): Promise<{ message?: string }> {
+    async requestDrink(user: number, drink: IDrink): Promise<{ message?: string }> {
         return (await this.axios.post<{ message?: string }>(this.route, {
-            user: 34, drink
+            user, drink
         })).data;
     }
 }

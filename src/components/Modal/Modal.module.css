@@ -22,11 +22,11 @@
     z-index:3;
     min-width: 300px;
     max-width:950px;
-    background-color: var(--black);
+    background-color: var(--background);
     box-shadow: 0 4px 6px 0 rgba(0,0,0,.2);
     padding:30px;
     text-align: center;
-    color:white;
+    border-radius: 6px;
     animation:showModal .2s ease-out forwards;
 }
 
