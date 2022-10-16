@@ -1,10 +1,10 @@
-import config from './config';
-import Logger from './loaders/logger';
+import config from './setup/config';
+import Logger from './setup/loaders/logger';
 
 async function startServer(): Promise<void> {
 
-    const { app } = await require('./loaders').default();
-    
+    const { app } = await require('./setup/loaders').default();
+
     app.listen(config.port, err => {
         if (err) {
             Logger.error(err);

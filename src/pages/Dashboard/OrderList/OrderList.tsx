@@ -42,8 +42,19 @@ export const OrderList : React.FunctionComponent<OrderListProps> = ({orders}) =>
     return <React.Fragment>
         {
             orders.map((order, i)=> 
-                <div className={styles.orderItemContainer} key={`order${i}`}>User {order.user} ordered a {order.drink} at {new Date(order.timestamp).toUTCString()}</div>
+                <OrderItem
+                    key={`order${i}`}
+                    order={order} />
             )
         }
     </React.Fragment>
+}
+
+type OrderItemProps = {
+    order: IOrder
+}
+const OrderItem : React.FunctionComponent<OrderItemProps> = ({order}) => {
+    return <div className={styles.orderItemContainer}>
+            User {order.user} ordered a {order.drink} at {new Date(order.timestamp).toUTCString()}
+        </div>;
 }

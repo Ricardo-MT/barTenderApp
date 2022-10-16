@@ -1,6 +1,6 @@
 import { Application } from 'express';
 import request from 'supertest'
-import expressLoader from '../../../loaders/express';
+import expressLoader from '../../../setup/loaders/express';
 
 describe('Server status', () => {
     let app: Application;

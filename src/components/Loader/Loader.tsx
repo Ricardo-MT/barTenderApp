@@ -3,10 +3,10 @@ import styles from './Loader.module.css';
 
 const Loader : React.FunctionComponent = () => {
 
-    return <div  className={styles.loaderWraper}>
+    return <div className={styles.loaderWraper}>
                 <div className={styles.loaderBck}></div>
                 <div className={styles.loaderContainer}>
-                Loading ...
+                    Loading ...
                 </div>
             </div>;
 }

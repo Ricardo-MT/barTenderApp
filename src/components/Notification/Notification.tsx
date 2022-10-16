@@ -9,16 +9,7 @@ type Props = {
     style?:React.CSSProperties,
 }
 
-/**
- * 
- * @param type Tipo string comprendido entre "error" | "success"; Para error y éxito respectivamente; 
- * @param tex Tipo string; El texto de la notificación.
- * @param style Tipo {} de propiedades css. Estos estilos se pondrán sobre el contenedor padre, es decir, podemos determinar la posicion (fixed, absolute), el tamaño, etc...
- * @example <Notification type="error" text="Algo ha salido mal" style={{position:'fixed', right:0, top:0}}/>
- * @example <Notification type="success" text="Algo ha salido bien" style={{position:'fixed', left:0, top:0, width:'100px'}}/>
- * @returns 
- */
-const Notification : FunctionComponent<Props> = (props) => {
+const Notification : FunctionComponent<Props> = ({style}) => {
 
     const notificationRef = useRef(null);
     const {notification, setNotification} = useContext(NotificationContext);
@@ -43,7 +34,7 @@ const Notification : FunctionComponent<Props> = (props) => {
         }
     }, [notification])
 
-    return notification && <div ref={notificationRef} className={notificationStyles.notification} style={Object.assign({},{color:notification.type === "success" ? "var(--statusSuccess)" : "var(--statusError)"}, props.style)}>
+    return notification && <div ref={notificationRef} className={notificationStyles.notification} style={Object.assign({},{color:notification.type === "success" ? "var(--statusSuccess)" : "var(--statusError)"}, style)}>
         <span>{notification.text}</span>
     </div>
 }

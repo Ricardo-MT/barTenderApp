@@ -1,5 +1,5 @@
 import React, { Dispatch, FunctionComponent } from "react";
-import { validateInput, ValidatorsTypes } from "../../utils/validators/Validators";
+import { ValidatorsTypes } from "../../utils/validators/Validators";
 import inputStyles from "./Input.module.css";
 
 type Props = {
@@ -23,28 +23,10 @@ type Props = {
     testId?:string 
 }
 
-/**
- * @author Ricardo Mejias
- * @param value String.
- * @param setValue Dispatch - String.
- * @param inputStyle Estilos CSS para el input tag.
- * @param containerStyle Estilos CSS para el div padre que encierra el label tag y el input tag.
- * @param label Tipo string. Si no hay label ni error, solo existirá el input dentro del div contenedor.
- * @param error Tipo string. Usar en conjunto con setError. La variable que almacena el error y su setter deben estar en el componente padre de este input.
- * @param type Tipo del input. Texto, numerico, date, etc.
- * @param name Tipo string. Cadena que linkea el label con su input correspondiente.
- * @param required Tipo bool.
- * @param disabled Tipo bool.
- * @returns Un div como padre, input html tag como hijo y componente principal.
- */
 const Input: FunctionComponent<Props> = ({testId, value, setValue, validators, inputStyle, containerStyle, customValidations, onClick, onBlur, onChange, label, error, setError, type, name, placeHolder, required, disabled = false }) => {
     const handleChanges = (e: React.ChangeEvent<HTMLInputElement>) => {
         const val = e.target.value;
         setValue(val)
-        if ((validators || customValidations) && setError) {
-            const err = validateInput(val, validators, customValidations);
-            setError(err)
-        }
         if (onChange) onChange(e)
     };
     const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {

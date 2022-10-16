@@ -4,7 +4,7 @@ import styles from './Header.module.css';
 type Props = {
 };
 
-export const Header: FunctionComponent<Props> = (props) => {
+export const Header: FunctionComponent<Props> = () => {
 	return (
 		<header>
 			<React.Fragment>

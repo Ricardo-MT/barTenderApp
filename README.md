@@ -1,48 +1,112 @@
-# Plantilla para proyectos con React y Express.
+# Developer JS BE Test - Bartender
 
-Esta plantilla tiene lo necesario para comenzar un proyecto usando React en el front-end, concretamente usando Create-React-App, y para el backend usamos el conjunto de herramientas formado por: MongoDB, NodeJs y Express. 
+Design and implement a simple NodeJS web application exposing HTTP API that simulates
+the bar tender service with simple ordering and dashboard interface in React. It should:
 
-## Antes de comenzar
+1. accept POST requests with customer number and drink type (BEER|DRINK) and:
+2. respond with 200 code when ordered drink will be served
+3. respond with 429 code when order is not accepted at the moment
+4. keep track of served drinks and customers and expose endpoint which lists them
 
-Antes de comenzar será necesario dentro del directorio /backend crear un archivo .env (Archivo de configuración de variables). En este archivo tendremos que poner las siguientes variables como mínimo:
--  ATLAS_URI
-- SESS_NAME
-- SESS_SECRET
-- SESS_LIFETIME
-- mode
-- port
+## Functional requirements:
 
-## Una vez tenemos el proyecto configurado.
+1. The barman can prepare at once 2 beers (drinks of BEER type) or 1 drink (DRINK
+type)
 
-### Descripción Estructura
+2. Preparing one drink takes X seconds (5 by default but value should be configurable)
+regardless of drink type
 
-Tenemos dos grandes directorios. Backend y src. Estos son nuestros directorios base. Cualquier cosa del frontend estará dentro de la carpeta src, y cualquier cosa del backend estará en la carpeta backend. 
-A continuación se detallan estos directorios.
+3. Drink request should get the response as soon as barman starts to prepare a drink. It
+should not be delayed for the time of the drink preparation.
 
-#### Frontend
-En la carpeta frontend nos encontramos con tres carpetas principales: components, pages, utils. 
+## Non-functional requirements:
 
-Debemos sentirnos libres a la hora de crear más carpetas pero siempre teniendo en cuenta qué estamos creando y dentro de cual de nuestras grandes secciones va. 
-Por ejemplo: Si quiero crearme una carpeta con subcomponentes para una página, como puede ser "Tabla con todos los clientes" pues irá dentro de pages/clientes/tablaClientes, pero nunca dentro de components o utils.
+1. Service should be idempotent
 
-##### components
-Aquí es donde vamos a alojar todos nuestros componentes abstractos, nos referimos a botones, tablas, inputs, modals, etc... Es decir todo aquello que no depende del contexto, sino que son elementos luego usaremos en nuestras páginas. 
+2. Requests should be audited using application log
 
-##### pages
-Aquí es donde vamos a tener todas nuestras páginas de la aplicación, es decir, por cada sección de nuestra aplicación o ruta, tendremos una carpeta donde iremos creando todo lo necesario para dicha sección.
+## Assumptions:
 
-##### utils
-Esta carpeta está dividida por dos carpetas principales. api e interfaces. 
+1. When answering OK for a drink request the barman prepares the drink in configured
+time X without any further requests or notifications
 
-La carpeta api tendrá un fichero por cada grupo de rutas en nuestro backend. Por ejemplo si tenemos en nuestro backend un grupo que empieza por /authentication y otro por clientes/, pues tendremos un fichero para todas las rutas de authentication y otro fichero para todas las rutas de clientes. Esto nos va permitir organizar todos nuestras peticiones y end points de manera clara.
+2. Application runs in-memory, there is no persistent storage
 
-La carpeta interfaces tendrá todas nuestras interfaces o tipos para usar con TypeScript. De esta manera un cambio en cualquier modelo debemos venir a esta carpeta a modificar la interfaz de este modelo, para que backend y frontend estén sincronizados.
+3. Application runs on a single node
 
+## Further assumptions by the developer:
 
-#### Backend
+1. The bartender can only serve one type of drink at a time
 
+2. Incoming orders handled by the bartender have a total amount of one drink
 
-### `yarn start`
+3. Only drinks with a defined capacity can be prepared by the bartender (no unknown drinks can be prepared)
+
+Deliverables
+
+Deliver the solution in zip file containing the source files or as git repository link.
+
+# Running Bartender App
+
+Node v16.13.2
+
+### npm install
+
+### backend/ npm install
+
+### npm start
+
+### backend/ npm start
+
+## Repo structure.
+
+Monorepo with React, Node and Express.
+
+/backend: Route path for implementing the Backend project
+/src: Route path for implementing the Frontend project
+
+### Backend
+
+Settings for /backend/.env:
+
+- port : Port where the service will run
+- mode : Execution enviorment
+- URL : URL of the service accepting requests
+- CLIENT_URL : URL of the client allowed to consume the API through CORS
+
+#### app
+API routes, endpoint controllers, data models and services.
+
+#### setup
+Express and Node configuration files.
+
+#### tests
+Services and endpoints tests.
+
+### Frontend
+
+Settings for /.env:
+
+- REACT_APP_API_URL : URL of the client
+
+#### components
+React components for multiple and decentralized use. 
+
+#### pages
+This directory should reflect the navigation tree used by the app. Route for specific or single use components.
+
+#### utils
+Asorted directory for useful pieces of code.
+
+.../api : Axios configuration file for API services and a file for each indepedent Route containing all endpoints relevant to that route.
+
+.../contexts : Each file represents a react context component for relevant data management.
+
+.../routes : Route definitions.
+
+.../validators: Asorted data validation functions.
+
+### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -50,12 +114,12 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `yarn test`
+### `npm test`
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+### `npm build`
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
@@ -65,7 +129,7 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
+### `npm eject`
 
 **Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
@@ -74,33 +138,3 @@ If you aren’t satisfied with the build tool and configuration choices, you can
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

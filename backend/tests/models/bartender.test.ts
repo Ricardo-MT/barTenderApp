@@ -1,7 +1,6 @@
-import request from 'supertest';
-import Bartender from '../../models/Bartender/bartender';
-import { IDrink } from '../../models/Drink/drink';
-import Order from '../../models/Order/order';
+import Bartender from '../../app/models/Bartender/bartender';
+import { IDrink } from '../../app/models/Drink/drink';
+import Order from '../../app/models/Order/order';
 
 describe('Bartender Model', () => {
     it('should have name, preparationTime, properties, preparationCapacity properties defined, and currentAction undefined', () => {

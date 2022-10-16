@@ -1,4 +1,4 @@
-import {useState, useCallback, useMemo, useContext} from 'react';
+import {useState, useCallback, useMemo} from 'react';
 import {AxiosResponse, AxiosRequestConfig, AxiosError } from 'axios';
 
 const useAxios = () => {

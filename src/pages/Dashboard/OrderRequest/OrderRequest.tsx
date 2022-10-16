@@ -14,6 +14,7 @@ import styles from './OrderRequest.module.css';
 const OrderRequestContainer : React.FunctionComponent = () => {
     const {setNotification} = useContext(NotificationContext);
     const [orderRequestDrink, setOrderRequestDrink] = useState<IDrink>();
+
     const requestOrder = useCallback((user: number, drink: IDrink)=>{
         const orderEndpoints = new OrderEndpoints(appApi);
             orderEndpoints.requestDrink(user, drink).then(response=>{
@@ -25,7 +26,7 @@ const OrderRequestContainer : React.FunctionComponent = () => {
                     setNotification({type: 'error', text: err.response.data.message})
                 }
             })
-    }, []);
+    }, [setNotification]);
 
     return <div className={styles.createOrdersPanelContainer}>
         <h2>Order your drinks here</h2>
@@ -38,7 +39,9 @@ const OrderRequestContainer : React.FunctionComponent = () => {
                                 setOrderRequestDrink(drink);
                             }} />)
         }
-        <Modal open={orderRequestDrink!=undefined} onClose={()=> setOrderRequestDrink(undefined)}>
+        <Modal
+            open={orderRequestDrink!=undefined} 
+            onClose={()=> setOrderRequestDrink(undefined)}>
             <OrderRequestForm
                 drink={orderRequestDrink!}
                 onSend={(user: number)=>{
@@ -94,7 +97,8 @@ const OrderRequestForm : React.FunctionComponent<OrderRequestFormProps> = ({drin
                         if(validateSendRequest(user)){
                             onSend(Number(user));
                         }
-                    }} />
+                    }}
+                />
             </div>
         </React.Fragment>
     )
