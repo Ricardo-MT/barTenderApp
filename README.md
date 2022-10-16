@@ -42,7 +42,7 @@ time X without any further requests or notifications
 
 3. Only drinks with a defined capacity can be prepared by the bartender (no unknown drinks can be prepared)
 
-Deliverables
+## Deliverables
 
 Deliver the solution in zip file containing the source files or as git repository link.
 
@@ -50,19 +50,20 @@ Deliver the solution in zip file containing the source files or as git repositor
 
 Node v16.13.2
 
-### npm install
+### 1. npm install
 
-### backend/ npm install
+### 2. backend/ npm install
 
-### npm start
+### 3. npm start
 
-### backend/ npm start
+### 4. backend/ npm start
 
 ## Repo structure.
 
 Monorepo with React, Node and Express.
 
 /backend: Route path for implementing the Backend project
+
 /src: Route path for implementing the Frontend project
 
 ### Backend
@@ -74,13 +75,13 @@ Settings for /backend/.env:
 - URL : URL of the service accepting requests
 - CLIENT_URL : URL of the client allowed to consume the API through CORS
 
-#### app
+#### /app
 API routes, endpoint controllers, data models and services.
 
-#### setup
+#### /setup
 Express and Node configuration files.
 
-#### tests
+#### /tests
 Services and endpoints tests.
 
 ### Frontend
@@ -89,13 +90,13 @@ Settings for /.env:
 
 - REACT_APP_API_URL : URL of the client
 
-#### components
+#### /components
 React components for multiple and decentralized use. 
 
-#### pages
+#### /pages
 This directory should reflect the navigation tree used by the app. Route for specific or single use components.
 
-#### utils
+#### /utils
 Asorted directory for useful pieces of code.
 
 .../api : Axios configuration file for API services and a file for each indepedent Route containing all endpoints relevant to that route.
